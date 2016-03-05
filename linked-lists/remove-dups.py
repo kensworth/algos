@@ -44,12 +44,10 @@ def remove_dupes(head):
 	while head != None:
 		if head.data in value_set:
 			prev.next_node = head.next_node
-			head = head.next_node
 		else:
 			value_set.add(head.data)
 			prev = head
-			head = head.next_node
-
+		head = head.next_node
 remove_dupes(head)
 print '--'
 print 'list with no dupes:'

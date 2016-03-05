@@ -1,4 +1,4 @@
-#implement an algorithmto determine if a string has all unique characters
+#implement an algorithm to determine if a string has all unique characters
 string1 = 'hello my name is ken'
 string2 = 'abcdefghijklmnopqrstuvwxyz'
 
