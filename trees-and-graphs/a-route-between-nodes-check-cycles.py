@@ -31,8 +31,7 @@ _E = [[5,2,1,6],[5],[],[],[3],[1,4,3],[4],[8],[],[10,11,12],[],[12],[]]
 g = Graph(_V, _E)
 
 g.log()
-print(g.routeBetween(0,3))
-
+print(g.routeBetweenCheckCycles(0,3))
 
 
 
