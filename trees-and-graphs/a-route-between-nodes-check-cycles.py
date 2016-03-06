@@ -21,13 +21,10 @@ class Graph(object):
     def routeBetweenCheckCycles(self, start, end):
         self.marked = []
         return self.routeBetween(start, end)
-        
-        
-            
-            
 
+#kenny: try to use the following data on the acyclic one I made and see what happens.
 _V = [0,1,2,3,4,5,6,7,8,9,10,11,12]
-_E = [[5,2,1,6],[5],[],[],[3],[1,4,3],[4],[8],[],[10,11,12],[],[12],[]]
+_E = [[5,2,1,6],[5],[],[],[3],[1,4,3],[4],[8],[],[10,11,12],[],[12],[]] 
 g = Graph(_V, _E)
 
 g.log()
