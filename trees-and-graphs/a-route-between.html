@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+g=(V,E)=>this.r=(a,b)=>E[a].some(x=>x==b||this.r(x,b));	
+
+var _V = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+var _E = [[5,2,1,6],[],[],[],[3],[4,3],[4],[8],[],[10,11,12],[],[12],[]];
+console.log(g(_V,_E)(0,3));
+console.log(g(_V,_E)(0,8));
+</script>
+</body>
+</html>
