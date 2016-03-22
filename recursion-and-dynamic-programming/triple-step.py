@@ -9,5 +9,5 @@ def countStairs(num):
     countStairs(num - 2)
     countStairs(num - 3)
 
-countStairs(15)
+countStairs(10)
 print(count['count'])
