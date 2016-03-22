@@ -4,8 +4,8 @@ b = [2,4,5,6,8,300]
 c = 0;
 
 while b:
-    c+=a[c]<b[0]or bool(a.insert(c,b.pop(0)))
-    if c==len(a):a,*b=a+b,
+ c+=a[c]<b[0]or bool(a.insert(c,b.pop(0)))
+ if c==len(a):a,*b=a+b,
 
 print(a)
 
