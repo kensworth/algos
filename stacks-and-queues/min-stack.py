@@ -1,4 +1,4 @@
-# Design a stack which, in addition to push and pop, has a fucntion stackMin which returns the minumum element? Push, pop and min should all operate in O(1) time.
+# Design a stack which, in addition to push and pop, has a function stackMin which returns the minumum element? Push, pop and min should all operate in O(1) time.
 
 class stack(object):
     def __init__(self):
