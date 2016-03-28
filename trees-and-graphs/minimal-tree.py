@@ -29,10 +29,12 @@ class BinaryTree:
             print node.value
             self.printTree(node.left)
             self.printTree(node.right)
+    def minTree(self, arr):
+        length = len(arr)
+        self.add(arr[length / 2])
+        if length > 1:
+            self.minTree(arr[0:length / 2])
+            self.minTree(arr[length / 2 + 1: length])
 bn = BinaryTree()
-length = len(arr)
-bn.add(arr[length / 2])
-for i in range(1, length / 2):
-    bn.add(arr[length / 2 + i])
-    bn.add(arr[length / 2 - i])
+bn.minTree(arr)
 bn.printTree(bn.root)
