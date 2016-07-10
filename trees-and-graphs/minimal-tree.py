@@ -5,36 +5,22 @@ class Node:
         self.value = value
         self.left = None
         self.right = None
-class BinaryTree:
-    def __init__(self):
-        self.root = None
-    def add(self, value):
-        if self.root == None:
-            self.root = Node(value)
-        else:
-            self._add(value, self.root) 
-    def _add(self, value, node):
-        if value < node.value:
-            if node.left != None:
-                self._add(value, node.left)
-            else:
-                node.left = Node(value)
-        else: 
-            if node.right != None:
-                self._add(value, node.right)
-            else:
-                node.right = Node(value)
-    def printTree(self, node):
-        if node != None:
-            print node.value
-            self.printTree(node.left)
-            self.printTree(node.right)
-    def minTree(self, arr):
-        length = len(arr)
-        self.add(arr[length / 2])
-        if length > 1:
-            self.minTree(arr[0:length / 2])
-            self.minTree(arr[length / 2 + 1: length])
-bn = BinaryTree()
-bn.minTree(arr)
-bn.printTree(bn.root)
+
+def sortedArrayToMinHeightBST(arr, start, end):
+    if start > end:
+        return None
+    mid = (start + end) / 2
+    node = Node(arr[mid])
+    node.left = sortedArrayToMinHeightBST(arr, start, mid - 1)
+    node.right = sortedArrayToMinHeightBST(arr, mid + 1, end)
+    return node
+
+def preOrderPrint(node):
+    if node == None:
+        return None
+    print node.value
+    preOrderPrint(node.left)
+    preOrderPrint(node.right)
+
+node = sortedArrayToMinHeightBST(arr, 0, len(arr) - 1)
+preOrderPrint(node)
