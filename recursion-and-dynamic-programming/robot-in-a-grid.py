@@ -3,22 +3,43 @@ import random
 width = 10
 height = 10
 #filling 2D array with 1's (90% chance) and 0's (10% chance)
-grid = [[(1 if random.random() < 0.9 else 0) for x in range (width)] for y in range(height)]
+grid = [[(1 if random.random() < 0.8 else 0) for x in range (width)] for y in range(height)]
 #guaranteeing beginning and end points are traversable
 grid[0][0], grid[height - 1][width - 1] = 1, 1
 #iterative DFS
+class Frontier:
+
+    def append(value):
+        raise NotImplementedError()
+
+    def pop():
+        raise NotImplementedError()
+
+class Queue(Frontier):
+
+    def __init__(self, values=[]):
+        self.queue = values
+
+    def append(self, value):
+        self.queue.append(value)
+
+    def pop(self):
+        return self.queue.pop(0)
+
+    def __len__(self):
+        return len(self.queue)
+
 def traverse(grid, start):
-    frontier = [] 
+    frontier = Queue() 
     frontier.append(start)
     while frontier:
         point = frontier.pop()
-        print point
         if isGoal(point):
             print 'reached'
-            break
+            return
         for next_point in next(point):
             frontier.append(next_point)
-
+    print 'failed'
 
 def isGoal(point):
     x, y = point
