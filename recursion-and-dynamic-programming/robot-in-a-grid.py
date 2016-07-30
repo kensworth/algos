@@ -4,25 +4,38 @@ width = 10
 height = 10
 #filling 2D array with 1's (90% chance) and 0's (10% chance)
 grid = [[(1 if random.random() < 0.9 else 0) for x in range (width)] for y in range(height)]
-#guaranteeing beginning and end nodes are traversable
+#guaranteeing beginning and end points are traversable
 grid[0][0], grid[height - 1][width - 1] = 1, 1
 #iterative DFS
-def traverse(grid):
-    stack, visited, path, steps = [], [], [], 0
-    stack.append([0, 0])
-    while stack:
-        steps += 1
-        node = stack.pop()
-        vertical, lateral = node[0], node[1]
-        if (node[0] + 1 < len(grid)) and grid[node[0] + 1][node[1]]:
-            stack.append([node[0] + 1, node[1]])
-        if (node[1] + 1 < len(grid[0])) and grid[node[0]][node[1] + 1]:
-            stack.append([node[0], node[1] + 1])
-    print steps
+def traverse(grid, start):
+    frontier = [] 
+    frontier.append(start)
+    while frontier:
+        point = frontier.pop()
+        print point
+        if isGoal(point):
+            print 'reached'
+            break
+        for next_point in next(point):
+            frontier.append(next_point)
 
-traverse(grid)
+
+def isGoal(point):
+    x, y = point
+    return (x == len(grid) - 1) and (y == len(grid[0]) - 1)
+
+def next(point):
+    row, col = point
+    next_points = []
+    if row < len(grid) - 1 and grid[row + 1][col]:
+        next_points.append((row + 1, col))
+    if col < len(grid[0]) - 1 and grid[row][col + 1]:
+        next_points.append((row, col + 1))
+    return next_points
 
 def printGrid(grid):
-    for i in range(len(grid)):
-        print grid[i]
+    for row in grid:
+        print row
+
 printGrid(grid)
+traverse(grid, (0,0))
